@@ -3,56 +3,16 @@
 {% block body %}
 
         <div class="container">
-        <form method="post" action="">
-          {%csrf_token%}
-                <div class="form-row ">
-                  <div class="form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
-                    <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email">
-                  </div>
-                  <div class="form-group col-md-6">
-                        <label for="inputAddress">Address</label>
-                        <input  type="text" name="address"  class="form-control" id="inputAddress" placeholder="1234 Main St">
-                      </div>
-                 
-                </div>
-
-
-                <div class="form-row  pl-0">
-                        <label for="inputAddress">Photo</label>
-                        <!-- picture  input -->
-                       <div class="input-group mb-3">
-                       <div class="custom-file">
-                           <input name="img" onchange="previewFile()" type="file" class="custom-file-input" id="inputGroupFile02"/>
-                            <label class="custom-file-label" id="labelfile" for="inputGroupFile02">Choose file</label>
-                    </div>
-            
-        </div>
-    </div>
-            
-            <img  id="#imagefile" class=" mb-4" width="200px" height="250px" src="#" alt="imggile"/>
-
-
-         
-            
-            
-
-                    <div class="form-group col-md-6 pl-0">
-                        
-  <label for="phonenum">Phone Number </label><br/>
-  <input name="telephone" id="phonenum" type="tel"  required />
-                    </div>
-
-       
-                
-
+        <form method='Post'  >
+          {% csrf_token %}
+               {{form.as_p}}
                 <button type="submit" class="btn btn-primary">Creer User</button>
               </form>
               </div>
 <script>
 
- $('#inputGroupFile02').change(function(){
-    let filename= $("#inputGroupFile02")[0].files[0].name;
+ $('#img').change(function(){
+    let filename= $("#img")[0].files[0].name;
     $("#labelfile").text(filename)
 
     

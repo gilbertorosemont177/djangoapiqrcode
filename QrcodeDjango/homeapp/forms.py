@@ -1,12 +1,23 @@
 from django import forms
+from .models import Formulaire
 
-class FormulaireForm(forms.Form):
+# class FormulaireForm(forms.Form):
+#     email = forms.CharField()
+#     address= forms.CharField()
+#     telephone= forms.CharField()
+#     #img = forms.ImageField()
+class PostFormulaire(forms.ModelForm):
+    class Meta:
+        model=Formulaire
+        fields=[
+
+            "email",
+            "address",
+            "telephone",
+            "img",
+        ]
+
+
    
-    email = forms.CharField(max_length=200,default='')
-    address= forms.CharField(max_length=200,default='')
-    telephone= forms.CharField(max_length=20,default='')
-    img=forms.ImageField()
 
-    def __str__(self):
-        return self.email
-
+   
