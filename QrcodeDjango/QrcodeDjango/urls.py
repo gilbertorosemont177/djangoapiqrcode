@@ -13,13 +13,27 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls.static import static
 from QrcodeDjango import views
 from django.conf.urls import url
 
+##api
+from rest_framework.urlpatterns import format_suffix_patterns
+#from homeapp import views
+
 urlpatterns = [
-    path('homeapp/',include('homeapp.urls')),
-    url('',views.redirect_form,name='redirect_form'),
-    path('admin/', admin.site.urls) 
+     url('homeapp/',include('homeapp.urls')),
+     url('',views.redirect_form,name='redirect_form'),
+    # path('admin/', admin.site.urls),
+    
+    #api get
+   # url('homeapp/',views.FormulaireView.as_view())
+
 ]
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

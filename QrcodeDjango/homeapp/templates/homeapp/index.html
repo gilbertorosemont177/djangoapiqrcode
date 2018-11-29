@@ -1,14 +1,15 @@
 
 {% extends "base.html" %}
 {% block body %}
+{% load rest_framework %}
 
         <div class="container">
-        <form method='Post'  >
+        <form method='Post' action='newuser' enctype="multipart/form-data" >
           {% csrf_token %}
-               {{form.as_p}}
+              {% render_form serializer %}
                 <button type="submit" class="btn btn-primary">Creer User</button>
-              </form>
-              </div>
+          </form>
+        </div>
 <script>
 
  $('#img').change(function(){
