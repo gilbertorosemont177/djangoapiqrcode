@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+{% block body %}
+{% load rest_framework %}
+
+        <div class="container">
+        <form method='Post' action='newuser' enctype="multipart/form-data" >
+          {% csrf_token %}
+              {% render_form serializer %}
+                <button type="submit" class="btn btn-primary">Creer User</button>
+          </form>
+        </div>
+<script>
+
+ $('#img').change(function(){
+    let filename= $("#img")[0].files[0].name;
+    $("#labelfile").text(filename)
+
+    
+ })
+
+
+
+
+ function previewFile() {
+  var preview = document.querySelector('img');
+  var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+  reader.addEventListener("load", function () {
+    preview.src = reader.result;
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+</script>
+
+{% endblock body %}
