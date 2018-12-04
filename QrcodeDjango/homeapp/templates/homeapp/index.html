@@ -2,6 +2,7 @@
 {% extends "base.html" %}
 {% block body %}
 {% load rest_framework %}
+  {% load staticfiles %}
 
         <div class="container">
         <form method='Post' action='newuser' enctype="multipart/form-data" >
@@ -10,6 +11,8 @@
                 <button type="submit" class="btn btn-primary">Creer User</button>
           </form>
         </div>
+
+     
 <script>
 
  $('#img').change(function(){

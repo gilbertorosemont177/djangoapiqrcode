@@ -19,21 +19,24 @@ from django.urls import path,include
 from django.conf.urls.static import static
 from QrcodeDjango import views
 from django.conf.urls import url
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 ##api
 from rest_framework.urlpatterns import format_suffix_patterns
 #from homeapp import views
 
 urlpatterns = [
-     url('homeapp/',include('homeapp.urls')),
-     url('',views.redirect_form,name='redirect_form'),
+   
+    url('',include('homeapp.urls')),
+    # url('',views.redirect_form,name='redirect_form'),
+   
+    #url('',views.redirect_form,name='redirect_form'),
     # path('admin/', admin.site.urls),
     
     #api get
    # url('homeapp/',views.FormulaireView.as_view())
 
 ]
+if settings.DEBUG is True:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if settings.DEBUG:
-    urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
-    urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

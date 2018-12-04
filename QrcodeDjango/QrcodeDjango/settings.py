@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -119,12 +120,29 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS=[os.path.join(BASE_DIR),"static_cdn"]
-MEDIA_URL="/media_cdn/"
-MEDIA_ROOT =os.path.join(BASE_DIR,"QrcodeDjango/media_cdn")
+# STATICFILES_DIRS=(os.path.join(BASE_DIR,'media'),)
+
+# STATICFILES_DIRS = (
+#     os.path.join(os.path.dirname(__file__),'static').replace('\\', '/'),
+# )
+
+# STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'static')
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+# Example: "/home2/media/media.lawrence.com/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+print("baseeeeeee dirrrrr")
+print(MEDIA_ROOT)
+
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# trailing slash.
+# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
+MEDIA_URL = '/media/'
+

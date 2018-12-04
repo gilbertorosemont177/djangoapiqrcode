@@ -7,6 +7,12 @@ class FormulaireSerializer(serializers.ModelSerializer):
     class Meta:
         model=Formulaire
         fields= ('email','address','telephone','img')
+    def get_photo_url(self, form):
+        request = self.context.get('request')
+        img = form.img.url
+        return request.build_absolute_uri(img)
+
+
 
     #     email = models.CharField(max_length=200,null=True)
     # address= models.CharField(max_length=200,null=True)

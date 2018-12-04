@@ -16,7 +16,10 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from .postemail import SendEmailQrCode
 from rest_framework.decorators import api_view
 from rest_framework import status
+from django.shortcuts import redirect
 
+def index(request):
+  return HttpResponseRedirect('/form')
 class FormulaireView(APIView):
 	renderer_classes = [TemplateHTMLRenderer]
 	template_name = 'homeapp/index.html'
@@ -37,11 +40,11 @@ class FormulaireView(APIView):
 		if not serializer.is_valid():
 			return Response({'serializer': serializer})
 		serializer.save()
-		return HttpResponseRedirect(self.template_name)
+		return HttpResponseRedirect('/form')
 
 	def creationQrcode(self,qrcodevalue):
 		qrcodeimg=qrcode.make(qrcodevalue)
-		qrcodeimg.save('homeapp/qrcodes/'+str(qrcodevalue)+'.png','PNG')
+		qrcodeimg.save('homeapp/qrcodes/qrcodetest.png','PNG')
 	
 		
 	
