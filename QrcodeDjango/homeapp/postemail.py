@@ -19,7 +19,7 @@ class SendEmailQrCode():
         self.multipartmsg['Subject']=self.__subject
         self.multipartmsg.attach(MIMEText(self.__body,'plain'))
 
-        #attach file
+      
         attachement=open(self.__pathfile,'rb')
 
         part=MIMEBase('application','octet-stream')

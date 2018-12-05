@@ -11,10 +11,3 @@ class FormulaireSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         img = form.img.url
         return request.build_absolute_uri(img)
-
-
-
-    #     email = models.CharField(max_length=200,null=True)
-    # address= models.CharField(max_length=200,null=True)
-    # telephone= models.CharField(max_length=200,null=True)
-    # img=models.FileField(null=True,blank=True)

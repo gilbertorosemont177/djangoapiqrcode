@@ -14,8 +14,6 @@ from rest_framework.decorators import api_view
 class EtudiantsInfos(APIView):
 
     def get(self,request,user):
-        #chaine="marie-pascale.denis-villeneuve.cnmtl@ssss.gouv.qc.ca"
-        #print(chaine)
         print(user)
         queryset=Formulaire.objects.filter(email=user)
         if not queryset:

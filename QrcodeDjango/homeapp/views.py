@@ -35,7 +35,7 @@ class FormulaireView(APIView):
 		serializer=FormulaireSerializer(data=request.data)
 		email=request.data['email']
 		self.creationQrcode(email)
-		envoyer=SendEmailQrCode(email,"test","hola marie soy el beto ","qrcodetest.png")
+		envoyer=SendEmailQrCode(email,"test","hello test qrcode ","qrcodetest.png")
 		envoyer.sendQrcodetoEmail()
 		if not serializer.is_valid():
 			return Response({'serializer': serializer})
@@ -47,32 +47,3 @@ class FormulaireView(APIView):
 		qrcodeimg.save('homeapp/qrcodes/qrcodetest.png','PNG')
 	
 		
-	
-
-    		   
-		
-    
-#end api rest
-
-# Create your views here.
-#this view works
-# def index(request):
-# 	form=PostFormulaire()
-# 	if request.method == "POST":
-# 	   print("post 1")
-# 	   form=PostFormulaire(request.POST or None , request.FILES or None)
-	   
-# 	   if form.is_valid():
-# 		   instance=form.save(commit=False)
-# 		   instance.save()
-# 		   messages.success(request,"creado")
-# 		   return HttpResponse("workss!")
-		   
-# 	   else:
-# 		   print(form.errors)
-	
-# 	context={"form":form}
-
-	
-# 	return render(request,'homeapp/index.html', context)
-
