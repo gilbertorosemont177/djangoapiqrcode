@@ -5,39 +5,46 @@
   {% load staticfiles %}
 
         <div class="container">
+       {% if messages %}
+{% for message in messages %}
+            
+<div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show" {% endif %}>
+    <span>{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %} 
+
         <form method='Post' action='newuser' enctype="multipart/form-data" >
           {% csrf_token %}
               {% render_form serializer %}
-                <button type="submit" class="btn btn-primary">Creer User</button>
+              <div class="mb-4 mt-4">
+                <img id="imagepreview" style="width:200px; height: 200px;" src="#" alt="image" />
+               </div>
+                <button type="submit" class="btn btn-primary mb-4 mt-4">Creer User</button>
           </form>
+          
         </div>
 
      
 <script>
 
- $('#img').change(function(){
-    let filename= $("#img")[0].files[0].name;
-    $("#labelfile").text(filename)
+ 
+ function readURL(input) {
 
-    
- })
+if (input.files && input.files[0]) {
+  var reader = new FileReader();
 
-
-
-
- function previewFile() {
-  var preview = document.querySelector('img');
-  var file    = document.querySelector('input[type=file]').files[0];
-  var reader  = new FileReader();
-
-  reader.addEventListener("load", function () {
-    preview.src = reader.result;
-  }, false);
-
-  if (file) {
-    reader.readAsDataURL(file);
+  reader.onload = function(e) {
+    $('#imagepreview').attr('src', e.target.result);
   }
+
+  reader.readAsDataURL(input.files[0]);
 }
+}
+
+$('input[name=img]').change(function() {
+readURL(this);
+});
 </script>
 
 {% endblock body %}
